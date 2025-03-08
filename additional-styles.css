@@ -1,0 +1,114 @@
+.secret-note {
+    font-size: 0.9rem;
+    color: var(--tg-theme-hint-color, rgba(255, 255, 255, 0.5));
+    margin-top: 24px;
+    font-style: italic;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(255, 255, 255, 0.03);
+    display: inline-block;
+    border-left: 3px solid rgba(120, 80, 228, 0.5);
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: all var(--transition-normal);
+}
+
+.secret-note:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.app-footer {
+    margin-top: 40px;
+    opacity: 0.7;
+    font-size: 0.9rem;
+    padding: 16px 0;
+    border-top: 1px solid var(--card-border);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity var(--transition-normal);
+}
+
+.app-footer:hover {
+    opacity: 0.9;
+}
+
+.app-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--tg-theme-hint-color, rgba(255, 255, 255, 0.6));
+    transition: color var(--transition-fast);
+}
+
+.app-branding:hover {
+    color: var(--tg-theme-text-color, rgba(255, 255, 255, 0.9));
+}
+
+.app-branding i {
+    color: var(--tg-theme-button-color, #2481cc);
+}
+
+/* Additional responsive improvements */
+@media (max-width: 480px) {
+    .secret-note {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .secret-note:hover {
+        transform: translateY(-1px);
+    }
+    
+    .app-footer {
+        margin-top: 35px;
+        padding: 14px 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .secret-note {
+        width: 100%;
+        padding: 6px 10px;
+        margin-top: 16px;
+    }
+    
+    .secret-note:hover {
+        transform: none;
+    }
+    
+    .app-footer {
+        margin-top: 30px;
+        padding: 12px 0;
+    }
+    
+    .app-branding {
+        font-size: 0.8rem;
+    }
+}
+
+/* Dark/Light theme adjustments */
+.dark-theme .secret-note {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left-color: rgba(120, 80, 228, 0.5);
+}
+
+.light-theme .secret-note {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-left-color: rgba(36, 129, 204, 0.5);
+}
+
+/* Accessibility - Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+    .secret-note:hover,
+    .app-footer:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,280 @@
+/* Enhanced Animations for Telegram Mini App */
+
+/* Global Animation Variables */
+:root {
+    --animation-short: 0.2s;
+    --animation-medium: 0.4s;
+    --animation-long: 0.8s;
+    --animation-extra-long: 1.2s;
+    --easing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --easing-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+    --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+    --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Page Load Animation */
+.container {
+    animation: fadeInUp 0.8s var(--easing-decelerate) forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header Animation */
+.app-header {
+    animation: slideInDown 0.6s var(--easing-decelerate) forwards;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Countdown Container Enhanced Animations */
+.countdown-container {
+    animation: pulseIn 0.7s var(--easing-bounce) forwards;
+    transition: transform 0.4s var(--easing-bounce), 
+                background-color 0.3s ease-out,
+                box-shadow 0.3s ease-out;
+}
+
+.countdown-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulseIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Timer Animation */
+.timer {
+    transition: color 0.3s ease, transform 0.4s var(--easing-bounce);
+}
+
+.timer:hover {
+    transform: scale(1.08);
+}
+
+/* Progress Bar Animation */
+.progress {
+    position: relative;
+    transition: width 1s linear, background-color 0.3s ease;
+}
+
+/* Enhanced shimmer effect */
+.progress::after {
+    animation: shimmer 2.5s infinite;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.05), 
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 255, 255, 0.05)
+    );
+}
+
+/* Secret Container Enhanced Animation */
+.secret-container {
+    animation: revealWithGlow 0.8s var(--easing-bounce) forwards;
+    transition: transform 0.5s var(--easing-smooth), box-shadow 0.5s ease;
+}
+
+.secret-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px -5px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes revealWithGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Secret Word Animation */
+.secret-word {
+    transition: transform 0.4s var(--easing-bounce), 
+                background-color 0.3s ease,
+                letter-spacing 0.5s ease;
+}
+
+.secret-word:hover {
+    transform: translateY(-3px) scale(1.03);
+    letter-spacing: 0.16em;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Copy Button Animation */
+.copy-btn {
+    transition: all 0.4s var(--easing-bounce);
+    overflow: hidden;
+}
+
+.copy-btn::before {
+    transition: transform 0.3s var(--easing-smooth);
+}
+
+.copy-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button click animation */
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.button-clicked {
+    animation: buttonClick 0.4s var(--easing-bounce);
+}
+
+/* Character-by-character reveal for secret code */
+@keyframes typeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.character-reveal {
+    display: inline-block;
+    opacity: 0;
+    animation: typeReveal 0.3s var(--easing-decelerate) forwards;
+}
+
+/* Footer animation */
+.app-footer {
+    animation: fadeIn 1s 0.5s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.7; }
+}
+
+/* Responsive animations */
+@media (max-width: 480px) {
+    .container {
+        animation-duration: 0.6s;
+    }
+    
+    .countdown-container:hover,
+    .secret-container:hover {
+        transform: translateY(-3px) scale(1.01);
+    }
+    
+    .secret-word:hover {
+        transform: translateY(-2px) scale(1.02);
+        letter-spacing: 0.14em;
+    }
+    
+    .copy-btn:hover {
+        transform: translateY(-3px);
+    }
+    
+    .character-reveal {
+        animation-duration: 0.25s;
+    }
+}
+
+/* Reduce animations for smaller screens */
+@media (max-width: 360px) {
+    .countdown-container:hover,
+    .secret-container:hover {
+        transform: translateY(-2px) scale(1);
+    }
+    
+    .secret-word:hover {
+        transform: translateY(-1px);
+        letter-spacing: 0.12em;
+    }
+    
+    .character-reveal {
+        animation-duration: 0.2s;
+    }
+}
+
+/* Accessibility - Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Pulse animation for the shield icon */
+.app-branding i {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

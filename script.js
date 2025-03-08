@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const secretWord = document.getElementById('secret-word');
     const copyBtn = document.getElementById('copy-btn');
     
-    // Set countdown duration (180 seconds = 3 minutes)
-    const countdownDuration = 180;
+    // Set countdown duration (60 seconds = 1 minutes)
+    const countdownDuration = 60;
     let timeRemaining = countdownDuration;
     let countdownInterval;
     
